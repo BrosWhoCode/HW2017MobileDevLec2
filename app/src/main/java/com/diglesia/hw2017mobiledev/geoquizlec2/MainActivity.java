@@ -15,12 +15,14 @@ public class MainActivity extends AppCompatActivity {
     private Button mNextButton;
     private int mQuestionIndex;
 
+    // Taken from the Big Nerd Ranch example
     private Question[] mQuestions = new Question[] {
-            new Question("question 1", true),
-            new Question("question 2", false),
-            new Question("question 3", true),
-            new Question("question 4", false),
-            new Question("question 5", true),
+            new Question(R.string.question_australia, true),
+            new Question(R.string.question_oceans, true),
+            new Question(R.string.question_mideast, false),
+            new Question(R.string.question_africa, false),
+            new Question(R.string.question_americas, true),
+            new Question(R.string.question_asia, true),
     };
 
     @Override
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
         Question currentQuestion = mQuestions[mQuestionIndex];
-        mQuestionTextView.setText(currentQuestion.getQuestionString());
+        mQuestionTextView.setText(currentQuestion.getQuestionStringResId());
 
         mTrueButton = (Button) findViewById(R.id.true_button);
         mTrueButton.setOnClickListener(new View.OnClickListener() {
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                     mQuestionIndex = 0;
                 }
                 Question currentQuestion = mQuestions[mQuestionIndex];
-                mQuestionTextView.setText(currentQuestion.getQuestionString());
+                mQuestionTextView.setText(currentQuestion.getQuestionStringResId());
             }
         });
     }
